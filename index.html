@@ -44,6 +44,18 @@
 <button></button>
 <script>
 
+const divs = document.querySelectorAll('div');
+
+function logText(e) {
+  e.stopPropagation(); //stop bubbling up
+  console.log(this.classList.value)
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture:true, //false on default, if true, event trigger go from parent -> child (click vao three -> console one first) (normally go child-> parent)
+  once: false //chi click duoc 1 lan duy nhat, nhung lan sau k chay nua
+}))
+
 </script>
 </body>
 </html>
